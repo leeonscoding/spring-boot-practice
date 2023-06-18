@@ -1,0 +1,45 @@
+import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.0'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.leeonscoding'
+version = '1.0'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.1.0'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+task buildFrontend(type: Exec) {
+	OperatingSystem os = DefaultNativePlatform.currentOperatingSystem;
+
+	workingDir 'src/main/frontend'
+
+	if(os.isWindows()) {
+		commandLine 'cmd', '/c', 'ng build'
+	} else {
+		commandLine 'sh', '-c', 'ng build'
+	}
+}
+
+task copyFrontendFiles(type: Copy) {
+	from 'src/main/frontend/dist/frontend'
+	into 'src/main/resources/static'
+}
+
+bootJar.configure {dependsOn(copyFrontendFiles)}
+copyFrontendFiles.configure {dependsOn(buildFrontend)}

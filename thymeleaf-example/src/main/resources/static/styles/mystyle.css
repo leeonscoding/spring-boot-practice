@@ -1,0 +1,5 @@
+a, label, input, select, button {
+    display: block;
+    margin: 0.5rem;
+    padding: 1rem;
+}
