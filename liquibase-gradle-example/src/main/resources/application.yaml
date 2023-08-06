@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost/paste
+    url: jdbc:postgresql://localhost/employee
     username: root
     password: root
   jpa:
@@ -10,3 +10,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.sql
