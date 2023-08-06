@@ -1,6 +1,6 @@
 -- liquibase formatted sql
 
--- changeset liquibase:1
+-- changeset create-employee:1
 create table employee(
     id int,
     name varchar(100),
