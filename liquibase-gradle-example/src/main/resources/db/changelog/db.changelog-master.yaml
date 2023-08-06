@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
-      file: classpath:/db/changelog/create-employee.sql
+      file: classpath:/db/changelog/changeset-000.sql
+  - include:
+      file: classpath:/db/changelog/changeset-001.sql
