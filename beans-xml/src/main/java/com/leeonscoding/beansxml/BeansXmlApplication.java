@@ -22,5 +22,7 @@ public class BeansXmlApplication implements CommandLineRunner {
 		car.setOrigin("japan");
 
 		System.out.println("-------"+ car.getName() + " : "+car.getOrigin());
+
+
 	}
 }
