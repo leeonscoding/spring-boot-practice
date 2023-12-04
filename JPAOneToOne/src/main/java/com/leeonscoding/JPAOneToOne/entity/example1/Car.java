@@ -1,4 +1,4 @@
-package com.leeonscoding.JPAOneToOne.entity;
+package com.leeonscoding.JPAOneToOne.entity.example1;
 
 import jakarta.persistence.*;
 import lombok.Getter;

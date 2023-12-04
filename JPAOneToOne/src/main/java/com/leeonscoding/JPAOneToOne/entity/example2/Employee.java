@@ -1,4 +1,4 @@
-package com.leeonscoding.JPAOneToOne.entity;
+package com.leeonscoding.JPAOneToOne.entity.example2;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -22,7 +22,7 @@ public class Employee {
     @Column(unique = true, nullable = false)
     private String phone;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name="car_id", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private Car car;
 }
